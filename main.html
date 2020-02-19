@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<!-- <title>main</title> -->
+	<script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+	<script src="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.js"></script>
+	<script src="http://www.w3schools.com/lib/w3data.js"></script>
+	<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/maintable.css">
+    <title>Study Planner</title>
+    <!---<link href="../../166project/style.css" rel="stylesheet" type="text/css">-->
+
+</head>
+<body>
+	<button onclick="logout()">logout</button>
+	<h1>welcome to user profile</h1>
+
+	<h1><span id="user"></span></h1>
+	<img id="avatar" src="" width="100" height="50"></img>
+	<div>
+		<table id="courses" align="center">
+        <tr>
+            <th id="one-first-sem">1.1</th>
+            <th id="one-second-sem">1.2</th>
+            <th id="two-first-sem">2.1</th>
+            <th id="two-second-sem">2.2</th>
+            <th id="three-first-sem">3.1</th>
+            <th id="three-second-sem">3.2</th>
+            <th id="three-third-sem">3.3</th>
+            <th id="four-first-sem">4.1</th>
+            <th id="four-second-sem">4.2</th>
+        </tr>
+        <tr>
+            <td class="empty" colspan="4"></td>
+            <td id="CMSC-192">CMSC 192</td>
+            <td class="empty" colspan="4"></td>
+        </tr>
+        <tr>
+            <td class="empty" colspan="4"></td>
+            <td id="CMSC-110">CMSC 110</td>
+            <td class="empty" colspan="4"></td>
+        </tr>
+        <tr>
+            <td id="CMSC-11" rowspan="8">CMSC 11</td>
+            <td id="CMSC-21" rowspan="7">CMSC 21</td>
+            <td id=CMSC-23>CMSC 23</td>
+            <td class="empty" colspan="6"></td>
+        </tr>
+        <tr>
+            <td id="CMSC-123" rowspan="6">CMSC 123</td>
+            <td id="CMSC-127">CMSC 127</td>
+            <td class="empty" colspan="5"></td>
+        </tr>
+        <tr>
+            <td class="empty" rowspan="5"></td>
+            <td id="CMSC-124">CMSC 124</td>
+            <td id="CMSC-125">CMSC 125</td>
+            <td class="empty"></td>
+            <td id="CMSC-137">CMSC 137</td>
+            <td id="CMSC-134">CMSC 134</td>
+        </tr>
+        <tr>
+            <td id="CMSC-128" rowspan="2">CMSC 128</td>
+            <td id="CMSC-129">CMSC 129</td>
+            <td id="CMSC-195">CMSC 195</td>
+            <td class="empty" colspan="2"></td>
+        </tr>
+        <tr>
+            <td class="empty" rowspan="2" colspan="3"></td>
+            <td id="CMSC-196">CMSC 196</td>
+        </tr>
+        <tr>
+            <td id="CMSC-142">CMSC 142</td>
+            <td class="empty" colspan="4"></td>
+        </tr>
+        <tr>
+            <td class="empty"></td>
+            <td id="CMSC-170">CMSC 170</td>
+            <td class="empty" rowspan="31"></td>
+            <td id="CMSC-173">CMSC 173</td>
+            <td class="empty" rowspan="6"></td>
+        </tr>
+        <tr>
+            <td class="empty"></td>
+            <td id="CMSC-130">CMSC 130</td>
+            <td id="CMSC-133">CMSC 133</td>
+            <td class="empty" rowspan="5" colspan="5"></td>
+        </tr>
+        <tr>
+            <td id="CMSC-56">CMSC 56</td>
+            <td id="CMSC-57">CMSC 57</td>
+            <td class="empty"></td>
+            <td id="CMSC-141">CMSC 141</td>
+        </tr>
+        <tr>
+            <td id="MATH-53" rowspan="3">MATH 53</td>
+            <td id="MATH-54">MATH 54</td>
+            <td id="MATH-55">MATH 55</td>
+        </tr>
+        <tr>
+            <td id="PHYSICS-81">PHYS 81</td>
+            <td id="PHYSICS-82">PHYS 82</td>
+        </tr>
+        <tr>
+            <td id="PHYSICS-81.1">PHYS 81.1</td>
+            <td id="PHYSICS-82.1">PHYS 82.1</td>
+        </tr>
+        <tr>
+            <td id="STAT-123">STAT 123</td>
+            <td class="empty" colspan="2"></td>
+            <td id="CMSC-106">CMSC 106</td>
+            <td id="CMSC-194.1">CMSC 194.1</td>
+            <td id="CMSC-194.2">CMSC 194.2</td>
+            <td id="CMSC-198.1">CMSC 198.1</td>
+            <td id="CMSC-198.2">CMSC 198.2</td>            
+        </tr>
+        <tr>
+            <td id="SAS-1">SAS 1</td>
+            <td class="empty" rowspan="4" colspan="8"></td>  
+        </tr>
+        <tr>
+            <td id="KAS-1">KAS 1</td>
+        </tr>
+        <tr>
+            <td id="PE-2">PE 2</td>
+        </tr>
+        <tr>
+            <td id="NSTP-1">NSTP 1</td>
+        </tr>
+        <tr>
+            <td class="empty" rowspan="20"></td>
+            <td id="COMM-10">Comm 10</td>
+            <td class="empty" rowspan="4" colspan="7"></td>
+        </tr>
+        <tr>
+            <td id="SCIENCE-11">Science 11</td>
+        </tr>
+        <tr>
+            <td id="PE-2.1">PE 2.1</td>
+        </tr>
+        <tr>
+            <td id="NSTP-2">NSTP 2</td>
+        </tr>
+        <tr>
+            <td class="empty" rowspan="16"></td>
+            <td id="ETHICS-1">Ethics 1</td>
+            <td class="empty" rowspan="2" colspan="6"></td>
+        </tr>
+        <tr>
+            <td id="PE-2.2">PE 2.2</td>
+        </tr>
+        <tr>
+            <td class="empty" rowspan="14"></td>
+            <td id="ARTS-1">Arts 1</td>
+            <td class="empty" rowspan="3" colspan="5"></td>
+        </tr>
+        <tr>
+            <td id="MATH-10">Math 10</td>
+        </tr>
+        <tr>
+            <td id="PE-2.3">PE 2.3</td>
+        </tr>
+        <tr>
+            <td class="empty" rowspan="11"></td>
+            <td id="STS-1">STS 1</td>
+            <td class="empty" rowspan="2" colspan="4"></td>
+        </tr>
+        <tr>
+            <td id="GE-ELECTIVE-1">GE Elective 1</td>
+        </tr>
+        <tr>
+            <td class="empty" rowspan="9"></td>
+            <td id="PI-100">PI 100</td>
+            <td class="empty" rowspan="3" colspan="3"></td>
+        </tr>
+        <tr>
+            <td id="GE-ELECTIVE-2">GE Elective 2</td>
+        </tr>
+        <tr>
+            <td id="ELECTIVE-1">CS Elective 1</td>            
+        </tr>
+        <tr>
+            <td class="empty" rowspan="6"></td>
+            <td id="GE-ELECTIVE-3">GE Elective 3</td>
+            <td class="empty" rowspan="3"></td>            
+        </tr>
+        <tr>
+            <td id="ELECTIVE-2">CS Elective 2</td>
+        </tr>
+        <tr>
+            <td id="ELECTIVE-3">CS Elective 3</td>
+        </tr>
+        <tr>
+            <td class="empty" rowspan="3"></td>
+            <td id="GE-ELECTIVE-4">GE Elective 4</td>            
+        </tr>
+        <tr>
+            <td id="ELECTIVE-4">CS Elective 4</td>
+        </tr>
+        <tr>
+            <td id="FREE-ELECTIVE">Free Elective</td>
+        </tr>
+    </table>
+	</div>
+	<script>
+		function logout(){
+			firebase.auth().signOut().then(function() {
+  				// Sign-out successful.
+  				window.location.assign('https://accounts.google.com/logout');
+  				//window.alert("Sign-out successful.");
+				}).catch(function(error) {
+ 				 // An error happened.
+			});
+		}
+		
+	</script>
+
+	<script src="init-firebase.js"></script>
+	<script src="main.js"></script>
+	<script>
+		w3IncludeHTML();
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,121 @@
+
+body { 
+  background: #cbebe7;  
+  color: rgba(0,0,0,0.87); 
+  font-family: Roboto, Helvetica, Arial, sans-serif; 
+  margin: 0; 
+  padding: 0; 
+}
+#container { 
+  background: white; 
+  max-width: 360px; 
+  margin: 100px auto 16px; 
+  padding: 32px 24px 16px; 
+  border-radius: 3px; 
+}
+#container h3 { 
+  color: #888; 
+  font-weight: normal; 
+  font-size: 16px; 
+  margin: 16px 0 12px; 
+}
+#container h2 { 
+  color: #ffa100; 
+  font-weight: bold; 
+  font-size: 16px; 
+  margin: 0 0 8px; 
+}
+#container h1 { 
+  font-size: 22px; 
+  font-weight: 300; 
+  color: rgba(0,0,0,0.6); 
+  margin: 0 0 16px;
+}
+#container p { 
+  line-height: 140%; 
+  margin: 16px 0 24px; 
+  font-size: 14px; 
+}
+#container a { 
+  display: block; 
+  text-align: center; 
+  background: #039be5; 
+  text-transform: uppercase; 
+  text-decoration: none; 
+  color: white; 
+  padding: 16px; 
+  border-radius: 4px; 
+}
+#container, #container a { 
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); 
+}
+#load { 
+  color: rgba(0,0,0,0.4); 
+  text-align: center;
+  font-size: 13px; 
+}
+@media (max-width: 600px) {
+  body, #container { 
+    margin-top: 0; 
+    background: white; 
+    box-shadow: none; 
+  }
+  body { 
+    border-top: 16px solid #ffa100;
+     }
+}
+/*main elements of index.html*/
+.center{
+  margin: 10px auto 20px;
+  width: 100%;
+  text-align: center; 
+  padding: 10px;
+}
+/*Loader*/
+.lds-ripple {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-ripple div {
+  position: absolute;
+  border: 4px solid #fff;
+  opacity: 1;
+  border-radius: 50%;
+  animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+.lds-ripple div:nth-child(2) {
+  animation-delay: -0.5s;
+}
+@keyframes lds-ripple {
+  0% {
+    top: 36px;
+    left: 36px;
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+  100% {
+    top: 0px;
+    left: 0px;
+    width: 72px;
+    height: 72px;
+    opacity: 0;
+  }
+}
+#page-container {
+  position: relative;
+  min-height: 100vh;
+}
+
+#content-wrap {
+  padding-bottom: 2.5rem;    /* Footer height */
+}
+
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 3 rem;            /* Footer height */
+}

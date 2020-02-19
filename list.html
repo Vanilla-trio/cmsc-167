@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+  <title>Details</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">  
+  <link rel="stylesheet" type = "text/css" href="css/list.css"> 
+  <link rel="stylesheet" href="css/bootstrap-4.3.1-dist/css/bootstrap.min.css">  
+</head>
+<body> 
+
+  <div class="limiter">
+		<div class="container-table100" id = "root"> 
+			<div class="wrap-table100">   
+				<div class="center">
+					<h3><span class="label" id = "course-name"></span></h3>
+				</div>
+				<h5>Students who have not taken the course yet.</h5>
+				<table class= table>
+					<thead>
+						<tr class="head"> 
+							<th class="column100 column2" data-column="column2">Name</th>
+							<th class="column100 column3" data-column="column3">Student No</th> 
+						</tr>
+					</thead>
+					<tbody id="student-rows">
+             
+					</tbody>
+     			 </table> 
+			</div>
+		</div>
+	</div>
+
+  <script src="https://www.gstatic.com/firebasejs/6.5.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-database.js"></script>  
+  <script src="init-firebase.js"></script>
+  <script src="list.js"></script>  
+</body>
+</html>

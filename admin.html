@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+  <title>Courses</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
+  <link rel="stylesheet" type = "text/css" href="css/main.css">
+  <link rel="stylesheet" href="css/bootstrap-4.3.1-dist/css/bootstrap.min.css">  
+</head>
+<body>  
+  <div class="center">
+    <h7>Click on course cells for details</h7>
+  </div>
+    <section> 
+        <table id="course-table"  class="table table-hover popup-trigger" cellspacing="0" width="100%" >
+            <col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col>
+          <thead>
+          <tr> 
+            <th colspan="2" class="th-sm">1.1</th>
+            <th colspan="2" class="th-sm">1.2</th>
+            <th colspan="2" class="th-sm">2.1</th>
+            <th colspan="2" class="th-sm">2.2</th>
+            <th colspan="2" class="th-sm">3.1</th>
+            <th colspan="2" class="th-sm">3.2</th>
+            <th colspan="2" class="th-sm">4.1</th>
+            <th colspan="2" class="th-sm">4.2</th>
+          </tr>
+        </thead>
+        <tbody id="courserows" class= 'clickable-row'>
+            <tr>
+              <td onclick="studentList('CMSC-11')"> CMSC 11 </td>
+              <td id= "CMSC-11">  </td>
+              <td onclick="studentList('CMSC-21')"> CMSC 21 </td>
+              <td id= "CMSC-21">  </td>
+              <td onclick="studentList('CMSC-130')"> CMSC 130 </td>
+              <td id= "CMSC-130">  </td>
+              <td onclick="studentList('CMSC-133')"> CMSC 133 </td>
+              <td id= "CMSC-133">  </td>
+              <td onclick="studentList('CMSC-192')" id = "cs192"> CMSC 192 </td>
+              <td id= "CMSC-192">  </td> 
+              <td onclick="studentList('CMSC-125')" id = "cs125"> CMSC 125 </td>
+              <td id= "CMSC-125">  </td>
+              <td onclick="studentList('CMSC-137')" id="cs137"> CMSC 137 </td>
+              <td id= "CMSC-137">  </td>
+              <td onclick="studentList('CMSC-134')"> CMSC 134 </td>
+              <td id= "CMSC-134">  </td>
+            </tr>
+            <tr>
+              <td onclick="studentList('CMSC-56')"> CMSC 56 </td>
+              <td id= "CMSC-56">  </td>
+              <td onclick="studentList('CMSC-57')"> CMSC 57 </td>
+              <td id= "CMSC-57">  </td>
+              <td onclick="studentList('CMSC-23')"> CMSC 23 </td>
+              <td id= "CMSC-23">  </td>
+              <td onclick="studentList('CMSC-127')"> CMSC 127 </td>
+              <td id= "CMSC-127">  </td>
+              <td onclick="studentList('CMSC-110')" id="cs110"> CMSC 110 </td>
+              <td id= "CMSC-110">  </td> 
+              <td onclick="studentList('CMSC-129')"> CMSC 129 </td>
+              <td id= "CMSC-129">  </td>
+              <td onclick="studentList('CMSC-173')"> CMSC 173 </td>
+              <td id= "CMSC-173">  </td>
+              <td onclick="studentList('CMSC-196')"> CMSC 196 </td>
+              <td id= "CMSC-196">  </td>
+            </tr>
+            <tr>
+              <td onclick="studentList('MATH-53')"> MATH 53 </td>
+              <td id= "MATH-53">  </td>
+              <td onclick="studentList('MATH-54')"> MATH 54 </td>
+              <td id= "MATH-54">  </td>
+              <td onclick="studentList('CMSC-123')"> CMSC 123 </td>
+              <td id= "CMSC-123">  </td>
+              <td onclick="studentList('CMSC-141')"> CMSC 141  </td>
+              <td id= "CMSC-141">  </td>
+              <td onclick="studentList('CMSC-124')"> CMSC 124  </td>
+              <td id= "CMSC-124">  </td>
+              <td onclick="studentList('CMSC-170')"> CMSC 170 </td>
+              <td id= "CMSC-170">  </td>
+              <td onclick="studentList('CMSC-198.1')"> CMSC 198.1  </td>
+              <td id= "CMSC-198.1">  </td>
+              <td onclick="studentList('CMSC-198.2')"> CMSC 198.2  </td>
+              <td id= "CMSC-198.2">  </td>
+            </tr>
+            <tr>
+              <td onclick="studentList('STAT-123')"> STAT 123 </td>
+              <td id= "STAT-123">  </td>
+              <td onclick="studentList('PHYSICS-81')"> PHYSICS 81 </td>
+              <td id= "PHYSICS-81">  </td>
+              <td onclick="studentList('MATH-55')"> MATH 55 </td>
+              <td id= "MATH-55">  </td>
+              <td onclick="studentList('CMSC-106')"> CMSC 106  </td>
+              <td id= "CMSC-106">  </td>
+              <td onclick="studentList('CMSC-128')"> CMSC 128  </td>
+              <td id= "CMSC-128">  </td>
+              <td onclick="studentList('CMSC-194.2')"> CMSC 194.2 </td>
+              <td id= "CMSC-194.2">  </td>
+              <td onclick="studentList('GE-ELECTIVE-3')"> GE ELECTIVE 3 </td>
+              <td id= "GE-ELECTIVE-3">  </td>
+              <td onclick="studentList('GE-ELECTIVE-4')"> GE ELECTIVE 4  </td>
+              <td id= "GE-ELECTIVE-4">  </td>
+            </tr>
+            <tr>
+              <td onclick="studentList('SAS-1')"> SAS 1 </td>
+              <td id= "SAS-1">  </td>
+              <td onclick="studentList('PHYSICS-81.1')"> PHYSICS 81.1 </td>
+              <td id= "PHYSICS-81.1">  </td>
+              <td onclick="studentList('PHYSICS-82')"> PHYSICS 82 </td>
+              <td id= "PHYSICS-82">  </td>
+              <td onclick="studentList('ARTS-1')"> ARTS 1  </td>
+              <td id= "ARTS-1">  </td>
+              <td onclick="studentList('CMSC-142')"> CMSC 142  </td>
+              <td id= "CMSC-142">  </td>
+              <td onclick="studentList('PI-100')"> PI 100 </td>
+              <td id= "PI-100">  </td>
+              <td onclick="studentList('ELECTIVE-2')"> ELECTIVE 2 </td>
+              <td id= "ELECTIVE-2">  </td>
+              <td onclick="studentList('ELECTIVE-4')"> ELECTIVE 4  </td>
+              <td id= "ELECTIVE-4">  </td>
+            </tr>
+            <tr>
+              <td onclick="studentList('KAS-1')"> KAS 1 </td>
+              <td id= "KAS-1">  </td>
+              <td onclick="studentList('COMM-10')"> COMM 10 </td>
+              <td id= "COMM-10">  </td>
+              <td onclick="studentList('PHYSICS-82.1')"> PHYSICS 82.1 </td>
+              <td id= "PHYSICS-82.1">  </td>
+              <td onclick="studentList('MATH-10')"> MATH 10 </td>
+              <td id= "MATH-10">  </td>
+              <td onclick="studentList('CMSC-194.1')"> CMSC 194.1  </td>
+              <td id= "CMSC-194.1">  </td>
+              <td onclick="studentList('GE-ELECTIVE-2')"> GE ELECTIVE 2 </td>
+              <td id= "GE-ELECTIVE-2">  </td>
+              <td onclick="studentList('ELECTIVE-3')"> ELECTIVE 3 </td>
+              <td id= "ELECTIVE-3">  </td>
+              <td onclick="studentList('FREE-ELECTIVE')"> FREE ELECTIVE  </td>
+              <td id= "FREE-ELECTIVE">  </td>
+            </tr>
+            <tr>
+              <td onclick="studentList('PE-2')"> PE 2 </td>
+              <td id= "PE-2">  </td>
+              <td onclick="studentList('SCIENCE-11')"> SCIENCE 11 </td>
+              <td id= "SCIENCE-11">  </td>
+              <td onclick="studentList('ETHICS-1')"> ETHICS 1 </td>
+              <td id= "ETHICS-1">  </td>
+              <td onclick="studentList('PE-2.3')"> PE 2.3 </td>
+              <td id= "PE-2.3">  </td>
+              <td onclick="studentList('STS-1')"> STS 1  </td>
+              <td id= "STS-1">  </td>
+              <td onclick="studentList('ELECTIVE-1')"> ELECTIVE 1 </td>
+              <td id= "ELECTIVE-1">  </td>
+              <td>  </td>
+              <td>  </td>
+              <td>  </td>
+              <td>  </td>
+            </tr>
+            <tr>
+              <td onclick="studentList('NSTP-1')"> NSTP 1 </td>
+              <td id= "NSTP-1">  </td>
+              <td onclick="studentList('PE-2.1')"> PE 2.1 </td>
+              <td id= "PE-2.1">  </td>
+              <td onclick="studentList('PE-2.2')"> PE 2.2 </td>
+              <td id= "PE-2.2">  </td>
+              <td>  </td>
+              <td>  </td>
+              <td onclick="studentList('GE-ELECTIVE-1')"> GE ELECTIVE 1 </td>
+              <td id= "GE-ELECTIVE-1">  </td>
+              <td>  </td>
+              <td>  </td>
+              <td>  </td>
+              <td>  </td>
+              <td>  </td>
+              <td>  </td>
+            </tr>
+            <tr>
+              <td>  </td>
+              <td>  </td>
+              <td onclick="studentList('NSTP-2')" id= "nspt2"> NSTP 2 </td>
+              <td id= "NSTP-2">  </td>
+              <td>  </td>
+              <td>  </td>
+              <td>  </td>
+              <td>  </td>
+              <td>  </td>
+              <td>  </td>
+              <td>  </td>
+              <td>  </td>
+              <td>  </td>
+              <td>  </td>
+              <td>  </td>
+              <td>  </td>
+            </tr>
+        </tbody> 
+      </table> 
+    </div>  
+  </section>
+  </div>
+ 
+    
+    
+  <script src="https://www.gstatic.com/firebasejs/6.5.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-database.js"></script>  
+  <script src="init-firebase.js"></script>
+  <script src="admin.js"></script>   
+</body>
+</html>

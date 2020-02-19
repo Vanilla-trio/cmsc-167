@@ -1,0 +1,19 @@
+table, th, td {
+    border: 1px solid black;
+    padding: 0.5rem;
+}
+table {
+    cursor: text;
+    empty-cells: hide;
+}
+td {
+    /* background-color:#808080; */
+    cursor: default;
+}
+.empty {
+    pointer-events: none;
+}
+.button {
+  margin:auto;
+  display:block;
+}
