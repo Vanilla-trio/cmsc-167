@@ -26,6 +26,7 @@ const studentListUI = document.getElementById("studentList");
 
 var tableBody = document.getElementById("student-rows");
 dbRef.child("students").once('value', function (snapshot){
+	console.log("table list of students not taken the course yet")
 	let student_obj = snapshot.val();
 	for(let key in student_obj){
 		//console.log("Original student"+ student_obj[key].name);
