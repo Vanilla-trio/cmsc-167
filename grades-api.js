@@ -41,5 +41,34 @@ const loadGrades = () => {
         `
         document.getElementById('movies').innerHTML = document.getElementById('movies').innerHTML + x;
     }
+    xhttp.open("GET", "http://localhost:8080/api/user", false);
+    xhttp.send(); 
+    const movies = JSON.parse(xhttp.responseText);
+    
+    for(let login of users){
+        var y = 0;
+        const x = ` 
+            <div class="col-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Account No${y}</h5> 
+
+                        <div>Email: ${login.email}</div>
+                        <div>Password: ${login.password}</div> 
+
+                        <hr>
+
+                        <button type="button" class="btn btn-danger">Delete</button>
+                        <button types="button" class="btn btn-primary" data-toggle="modal"
+                            data-target="#editBookModal" onClick="setEditModal(${login.email})">
+                            Edit
+                        </button>
+                    </div>
+                </div>
+            </div>
+        `
+        document.getElementById('accounts').innerHTML = document.getElementById('accounts').innerHTML + x;
+        y++;
+    }
 }
 loadGrades();
