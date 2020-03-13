@@ -1,8 +1,18 @@
-
+const winston = require('winston')
+ 
 var counter = 0;
 const dbRef = firebase.database().ref(); 
 var count = 0;
 var rows = document.getElementById("courserows");
+
+const logConfigurations = {
+	'transports':[
+		new winston.transports.File({
+			filename: './logs/logmessages.log'
+		})
+	]
+}
+const logger = winston.createLogger(logConfigurations)
 
 dbRef.child("students").once('value', function (snapshot){
 	let students = snapshot.val();
@@ -11,15 +21,21 @@ dbRef.child("students").once('value', function (snapshot){
 	}
 });   
 //list of subjects... 
-dbRef.child("subjects").once('value', function (subjectsnapshot){ 
-	console.log("admin page")
-	console.log("table list of subjects")
+dbRef.child("subjects").once('value', function (subjectsnapshot){  
+	logger.log({
+		message: 'Admin Page',
+		level: 'info'
+	})
 	let subject_obj = subjectsnapshot.val();
 	for(let key3 in subject_obj){
 		//console.log(subject_obj[key3].code);
 		if(subject_obj[key3].code != "CMSC 195"){
 		//list of all students
 			dbRef.child("students").once('value', function (snapshot){
+				logger.log({
+					message: 'Display course table ',
+					level: 'info'
+				})
 				let student_obj = snapshot.val();
 				for(let key in student_obj){
 					//console.log("Original student"+ student_obj[key].name);
@@ -49,13 +65,15 @@ dbRef.child("subjects").once('value', function (subjectsnapshot){
 	}
 });
 
-function studentList(course){
-	var x = document.getElementById(course).value;
-	//x undefined
-	console.log(x); //alert is still not working because x takes time to load. 
+function showStudentList(course){
+	var x = document.getElementById(course).value; 
+	console.log(x);  
 	if(x == 0){
 		alert("All the students in the student list have taken this subject");
-		console.log("all the students in the list have taken this subject")
+		logger.log({
+			message: 'All the students in the list who have taken this subject',
+			level: 'info'
+		})
 	}
 	else{
 		location.href = 'list.html?course='+course;
