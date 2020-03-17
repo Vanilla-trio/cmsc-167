@@ -17,7 +17,6 @@ function getUrlVars() {
 }
 
 const dbRef = firebase.database().ref();
-var flag = 0;
 var mycourse = getUrlVars()["course"];
 //console.log(mycourse);
 mycourse = mycourse.replace(/-/g, ' ');
@@ -37,32 +36,30 @@ function appendStudent(studentName){
 	tableBody.appendChild(tr);
 }
 
+function filterStudentsList(subjectRef, student_obj, key){
+	subjectRef.once('value', function (subjectStudentsnapshot){
+		var flag = 0;
+		let student_list = subjectStudentsnapshot.val();
+		for(let key2 in student_list){
+			if(student_obj[key].name == student_list[key2].name){
+				flag = 1;
+			}					
+		}
+		if(flag == 0){ 
+			appendStudent(student_obj[key].name)
+		}
+		flag = 0;
+	});
+}
 dbRef.child("students").once('value', function (snapshot){
 	console.log("table list of students not taken the course yet")
 	let student_obj = snapshot.val();                                       //refactor loop is too long
-	for(let key in student_obj){
-		//console.log("Original student"+ student_obj[key].name);
-		//get list of students of a subject
+	for(let key in student_obj){ 
 		dbRef.child("subjects").orderByChild("code").equalTo(mycourse).once("value", subjectsnapshot => {
 			if(subjectsnapshot.exists()){
 				var key1 = Object.keys(subjectsnapshot.val())[0];
 				const subjectStudentRef = dbRef.child('subjects/' + key1 +'/studentsTaken');
-				subjectStudentRef.once('value', function (subjectStudentsnapshot){
-					let student_list = subjectStudentsnapshot.val();
-					for(let key2 in student_list){
-						if(student_obj[key].name == student_list[key2].name){
-							flag = 1;
-						}					
-					}
-					if(flag == 0){
-						//let $li = document.createElement("li");
-						//$li.innerHTML = student_obj[key].name;
-						//studentListUI.append($li);
-						//console.log(student_obj[key].name);
-						appendStudent(student_obj[key].name)
-					}
-					flag = 0;
-				});
+				filterStudentsList(subjectStudentRef,student_obj, key)
 			}
 		});
 	} 
