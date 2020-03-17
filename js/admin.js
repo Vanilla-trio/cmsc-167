@@ -48,14 +48,14 @@ function getStudentList(subject_obj, key){
  
 //list of subjects... 
 dbRef.child("subjects").once('value', function (subjectsnapshot){   
-	let subject_obj = subjectsnapshot.val();
-	for(let key3 in subject_obj){ 
-		if(subject_obj[key3].code != "CMSC 195"){
+	let subject_list = subjectsnapshot.val(); 
+	for(let subject in subject_list){ 
+		if(subject_list[subject].code != "CMSC 195"){
 		//list of all students
 			dbRef.child("students").once('value', function (snapshot){
 				let student_obj = snapshot.val();
 				for(let key in student_obj){  
-					getStudentList(subject_obj, key3);
+					getStudentList(subject_list, subject);
 				} 
 			});
 		}
@@ -69,9 +69,8 @@ function showStudentList(course){
 		alert("All the students in the student list have taken this subject"); 
 	}
 	else{
-		//location.href = 'list.html?course='+course;
-	}
-	//window.location = '/list.html?course='+course;
+		location.href = 'list.html?course='+course;
+	} 
 }   
 
 function changeCellColor(bgColor, color){
