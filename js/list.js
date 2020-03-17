@@ -18,13 +18,13 @@ class UrlVars{
 }
 
 const dbRef = firebase.database().ref();
+
 var url = new UrlVars();
-var mycourse = url.getUrlVars()["course"];
-//console.log(mycourse);
+var mycourse = url.getUrlVars()["course"]; 
 mycourse = mycourse.replace(/-/g, ' ');
+
 document.getElementById('course-name').innerHTML = mycourse;  
 const studentListUI = document.getElementById("studentList");
-
 var tableBody = document.getElementById("student-rows");
 
 function appendStudent(studentName){
