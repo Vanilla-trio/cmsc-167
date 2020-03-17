@@ -29,9 +29,7 @@ function displayStudentList(reference, subject){
 		let student_list = subjectStudentsnapshot.val();
 		for(let key2 in student_list){
 			counter++;						
-		}
-		//console.log(counter);
-
+		} 
 		document.getElementById(subject).innerHTML = count - counter;
 		counter = 0;
 	});
