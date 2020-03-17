@@ -25,6 +25,18 @@ document.getElementById('course-name').innerHTML = mycourse;
 const studentListUI = document.getElementById("studentList");
 
 var tableBody = document.getElementById("student-rows");
+
+function appendStudent(studentName){
+	var tr = document.createElement('TR');
+	var name = document.createElement('TD');
+	var no = document.createElement('TD');
+	name.appendChild(document.createTextNode(studentName)); 
+	no.appendChild(document.createTextNode(" data "));  
+	tr.appendChild(name);  
+	tr.appendChild(no);
+	tableBody.appendChild(tr);
+}
+
 dbRef.child("students").once('value', function (snapshot){
 	console.log("table list of students not taken the course yet")
 	let student_obj = snapshot.val();                                       //refactor loop is too long
@@ -47,15 +59,7 @@ dbRef.child("students").once('value', function (snapshot){
 						//$li.innerHTML = student_obj[key].name;
 						//studentListUI.append($li);
 						//console.log(student_obj[key].name);
-						var tr = document.createElement('TR');
-						var name = document.createElement('TD');
-						var no = document.createElement('TD');
-						name.appendChild(document.createTextNode(student_obj[key].name));  
-						console.log(student_obj[key].name);
-						no.appendChild(document.createTextNode(" data "));  
-						tr.appendChild(name);  
-						tr.appendChild(no);
-						tableBody.appendChild(tr);
+						appendStudent(student_obj[key].name)
 					}
 					flag = 0;
 				});
