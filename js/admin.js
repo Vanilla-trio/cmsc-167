@@ -38,17 +38,15 @@ function getStudentList(subject_obj, key){
 }
  
 //list of subjects... 
-dbRef.child("subjects").once('value', function (subjectsnapshot){    // subdivide into functions // for routines
+dbRef.child("subjects").once('value', function (subjectsnapshot){     
 	//subdivide design to routine levels
 	let subject_obj = subjectsnapshot.val();
-	for(let key3 in subject_obj){
-		//console.log(subject_obj[key3].code);
+	for(let key3 in subject_obj){ 
 		if(subject_obj[key3].code != "CMSC 195"){
 		//list of all students
 			dbRef.child("students").once('value', function (snapshot){
 				let student_obj = snapshot.val();
-				for(let key in student_obj){
-					//console.log("Original student"+ student_obj[key].name);
+				for(let key in student_obj){ 
 					//get list of students of a subject
 					getStudentList(subject_obj, key3);
 				} 
@@ -73,15 +71,17 @@ function showStudentList(course){
 	//window.location = '/list.html?course='+course;
 }   
 
+function changeCellColor(bgColor, color){
+	event.target.style.backgroundColor = bgColor;
+	event.target.style.color = color;
+}
 rows.addEventListener("mouseover", function(event){   //refactor  //code is duplicated
 	
 	if(isNaN(parseInt(event.target.innerHTML))){  
-		event.target.style.backgroundColor = "#d9f8f7";
-		event.target.style.color = ""; 
+		changeCellColor("#d9f8f7", "") 
 	} 
 }, false);
 
 rows.addEventListener("mouseout", function(event){  
-	event.target.style.backgroundColor = "";
-	event.target.style.color = "";  
+	changeCellColor("", "") 
 }, false);
