@@ -36,30 +36,30 @@ function appendStudent(studentName){
 	tableBody.appendChild(tr);
 }
 
-function filterStudentsList(subjectRef, student_obj, key){
+function filterStudentsList(subjectRef, studentname){
 	subjectRef.once('value', function (subjectStudentsnapshot){
 		var flag = 0;
 		let student_list = subjectStudentsnapshot.val();
 		for(let key2 in student_list){
-			if(student_obj[key].name == student_list[key2].name){
+			if(studentname == student_list[key2].name){
 				flag = 1;
 			}					
 		}
 		if(flag == 0){ 
-			appendStudent(student_obj[key].name)
+			appendStudent(studentname)
 		}
 		flag = 0;
 	});
 }
 dbRef.child("students").once('value', function (snapshot){
 	console.log("table list of students not taken the course yet")
-	let student_obj = snapshot.val();                                       //refactor loop is too long
+	let this_student = snapshot.val();                                       //refactor loop is too long
 	for(let key in student_obj){ 
 		dbRef.child("subjects").orderByChild("code").equalTo(mycourse).once("value", subjectsnapshot => {
 			if(subjectsnapshot.exists()){
 				var key1 = Object.keys(subjectsnapshot.val())[0];
 				const subjectStudentRef = dbRef.child('subjects/' + key1 +'/studentsTaken');
-				filterStudentsList(subjectStudentRef,student_obj, key)
+				filterStudentsList(subjectStudentRef,this_student[key].name)
 			}
 		});
 	} 
