@@ -3,9 +3,18 @@ const dbRef = firebase.database().ref();
 var count = 0;
 var rows = document.getElementById("courserows");
  
-class Students {   //class 1
-	constructor(){
-
+class StudentCounter {   
+	defaultValue(count){
+		this.count = count
+	}
+	increase(){
+		this.count++
+	}
+	decrease(){
+		this.count--
+	}
+	getCount(){
+		return this.count;
 	}
 } 
 
@@ -38,16 +47,14 @@ function getStudentList(subject_obj, key){
 }
  
 //list of subjects... 
-dbRef.child("subjects").once('value', function (subjectsnapshot){     
-	//subdivide design to routine levels
+dbRef.child("subjects").once('value', function (subjectsnapshot){   
 	let subject_obj = subjectsnapshot.val();
 	for(let key3 in subject_obj){ 
 		if(subject_obj[key3].code != "CMSC 195"){
 		//list of all students
 			dbRef.child("students").once('value', function (snapshot){
 				let student_obj = snapshot.val();
-				for(let key in student_obj){ 
-					//get list of students of a subject
+				for(let key in student_obj){  
 					getStudentList(subject_obj, key3);
 				} 
 			});
