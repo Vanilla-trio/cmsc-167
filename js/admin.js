@@ -24,24 +24,26 @@ dbRef.child("students").once('value', function (snapshot){
 		count++;
 	}
 });
+function displayStudentList(reference, subject){
+	reference.once('value', function (subjectStudentsnapshot){
+		let student_list = subjectStudentsnapshot.val();
+		for(let key2 in student_list){
+			counter++;						
+		}
+		//console.log(counter);
+
+		document.getElementById(subject).innerHTML = count - counter;
+		counter = 0;
+	});
+}
 function getStudentList(subject_obj, key){
 	dbRef.child("subjects").orderByChild("code").equalTo(subject_obj[key].code).once("value", subjectsnapshot => {
 		if(subjectsnapshot.exists()){
-			var key1 = Object.keys(subjectsnapshot.val())[0];
+			var key1 = Object.keys(subjectsnapshot.val())[0]; 
 			const subjectStudentRef = dbRef.child('subjects/' + key1 +'/studentsTaken');
-			subjectStudentRef.once('value', function (subjectStudentsnapshot){
-				let student_list = subjectStudentsnapshot.val();
-				for(let key2 in student_list){
-					counter++;						
-				}
-				//console.log(counter);
-				var htmlname = subject_obj[key].code;
-				htmlname = htmlname.replace(/\s+/g, '-');
-				console.log(htmlname);
-
-				document.getElementById(htmlname).innerHTML = count - counter;
-				counter = 0;
-			});
+			var htmlname = subject_obj[key].code;
+			htmlname = htmlname.replace(/\s+/g, '-'); 
+			displayStudentList(subjectStudentRef, htmlname)
 		}	
 	});  
 }
