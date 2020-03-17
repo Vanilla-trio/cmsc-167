@@ -14,7 +14,29 @@ dbRef.child("students").once('value', function (snapshot){
 	for(let key in students){
 		count++;
 	}
-});   
+});
+function getStudentList(subject_obj, key){
+	dbRef.child("subjects").orderByChild("code").equalTo(subject_obj[key].code).once("value", subjectsnapshot => {
+		if(subjectsnapshot.exists()){
+			var key1 = Object.keys(subjectsnapshot.val())[0];
+			const subjectStudentRef = dbRef.child('subjects/' + key1 +'/studentsTaken');
+			subjectStudentRef.once('value', function (subjectStudentsnapshot){
+				let student_list = subjectStudentsnapshot.val();
+				for(let key2 in student_list){
+					counter++;						
+				}
+				//console.log(counter);
+				var htmlname = subject_obj[key].code;
+				htmlname = htmlname.replace(/\s+/g, '-');
+				console.log(htmlname);
+
+				document.getElementById(htmlname).innerHTML = count - counter;
+				counter = 0;
+			});
+		}	
+	});  
+}
+ 
 //list of subjects... 
 dbRef.child("subjects").once('value', function (subjectsnapshot){    // subdivide into functions // for routines
 	//subdivide design to routine levels
@@ -28,25 +50,7 @@ dbRef.child("subjects").once('value', function (subjectsnapshot){    // subdivid
 				for(let key in student_obj){
 					//console.log("Original student"+ student_obj[key].name);
 					//get list of students of a subject
-					dbRef.child("subjects").orderByChild("code").equalTo(subject_obj[key3].code).once("value", subjectsnapshot => {
-						if(subjectsnapshot.exists()){
-							var key1 = Object.keys(subjectsnapshot.val())[0];
-							const subjectStudentRef = dbRef.child('subjects/' + key1 +'/studentsTaken');
-							subjectStudentRef.once('value', function (subjectStudentsnapshot){
-								let student_list = subjectStudentsnapshot.val();
-								for(let key2 in student_list){
-									counter++;						
-								}
-								//console.log(counter);
-								var htmlname = subject_obj[key3].code;
-								htmlname = htmlname.replace(/\s+/g, '-');
-								console.log(htmlname);
-
-								document.getElementById(htmlname).innerHTML = count - counter;
-								counter = 0;
-							});
-						}
-					});
+					getStudentList(subject_obj, key3);
 				} 
 			});
 		}
