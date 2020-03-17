@@ -7,17 +7,19 @@ container.setAttribute('class', 'container');
 
 app.appendChild(logo);
 app.appendChild(container);*/
-
-function getUrlVars() {
-    var vars = {};
-    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
-        vars[key] = value;
-    });
-    return vars;
+class UrlVars{
+	getUrlVars() {
+	    var vars = {};
+	    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+	        vars[key] = value;
+	    });
+	    return vars;
+	}
 }
 
 const dbRef = firebase.database().ref();
-var mycourse = getUrlVars()["course"];
+var url = new UrlVars();
+var mycourse = url.getUrlVars()["course"];
 //console.log(mycourse);
 mycourse = mycourse.replace(/-/g, ' ');
 document.getElementById('course-name').innerHTML = mycourse;  
@@ -54,7 +56,7 @@ function filterStudentsList(subjectRef, studentname){
 dbRef.child("students").once('value', function (snapshot){
 	console.log("table list of students not taken the course yet")
 	let this_student = snapshot.val();                                       //refactor loop is too long
-	for(let key in student_obj){ 
+	for(let key in this_student){ 
 		dbRef.child("subjects").orderByChild("code").equalTo(mycourse).once("value", subjectsnapshot => {
 			if(subjectsnapshot.exists()){
 				var key1 = Object.keys(subjectsnapshot.val())[0];
