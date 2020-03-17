@@ -1,4 +1,3 @@
-var counter = 0;
 const dbRef = firebase.database().ref(); 
 var count = 0;
 var rows = document.getElementById("courserows");
@@ -25,6 +24,7 @@ dbRef.child("students").once('value', function (snapshot){
 	}
 });
 function displayStudentList(reference, subject){
+	var counter = 0;
 	reference.once('value', function (subjectStudentsnapshot){
 		let student_list = subjectStudentsnapshot.val();
 		for(let key2 in student_list){
