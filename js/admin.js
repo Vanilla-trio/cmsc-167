@@ -66,14 +66,10 @@ function showStudentList(course){
 	var x = document.getElementById(course).value; 
 	console.log(x);  
 	if(x == 0){
-		alert("All the students in the student list have taken this subject");
-		logger.log({
-			message: 'All the students in the list who have taken this subject',
-			level: 'info'
-		})
+		alert("All the students in the student list have taken this subject"); 
 	}
 	else{
-		location.href = 'list.html?course='+course;
+		//location.href = 'list.html?course='+course;
 	}
 	//window.location = '/list.html?course='+course;
 }   
